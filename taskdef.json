@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "dmytroapp2",
-            "image": "360119372877.dkr.ecr.us-east-1.amazonaws.com/ecs-sample-app:latest",
+            "image": "<IMAGE1_NAME>",
             "essential": true,
             "portMappings": [
                 {

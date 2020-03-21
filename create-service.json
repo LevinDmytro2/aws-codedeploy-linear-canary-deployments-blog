@@ -1,0 +1,29 @@
+{
+    "taskDefinition": "ecs-demo:4",
+    "cluster": "ECS-Cluster",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:360119372877:targetgroup/ecs1/84892e9dcda6fc04",
+            "containerName": "dmytroapp2",
+            "containerPort": 80
+        }
+    ],
+    "desiredCount": 1,
+    "launchType": "FARGATE",
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "CODE_DEPLOY"
+    },
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-003b9505487a589b2",
+                "subnet-0d8f52bf11040d695"
+            ],
+            "securityGroups": [
+                "sg-0f4423c7a61036409"
+            ],
+            "assignPublicIp": "ENABLED"
+        }
+    }
+}

@@ -1,0 +1,59 @@
+[
+  {
+    "essential": true,
+    "memory": 512,
+    "name": "qa-gaia-cron",
+    "cpu": 256,
+    "image": "360119372877.dkr.ecr.us-east-1.amazonaws.com/testbase:latest",
+    "secrets": [
+            {
+                "name": "GAIA_DATABASE_USER",
+                "valueFrom": "/dev/gaia/database_username"
+            },
+            {
+                "name": "GAIA_APPLICATION_SECRET",
+                "valueFrom": "/dev/gaia/application_secret"
+            },
+            {
+                "name": "GAIA_DATABASE_PASS",
+                "valueFrom": "/dev/gaia/database_password"
+            }
+      ],
+      "environment": [
+        {
+          "name": "GAIA_SERVICES_ENABLED",
+          "value": "true"
+        },
+        {
+          "name": "GAIA_WEBHOOK_CHANNEL",
+          "value": "43589384753490094"
+        },
+        {
+          "name": "GAIA_PLAY_ENVIRONMENT",
+          "value": "development"
+        },
+        {
+          "name": "GAIA_DATABASE_URL",
+          "value": "jdbc:postgresql://thedoras.cluster-cxfeateo6sft.us-east-1.rds.amazonaws.com/v4gaia"
+        },
+        {
+          "name": "GAIA_PNODE_COUNT",
+          "value": "1"
+        },
+        {
+          "name": "GAIA_NODE_INDEX",
+          "value": "0"
+        }
+      ],
+
+      "logConfiguration": {
+        "logDriver": "json-file"
+      },
+    "portMappings": [
+        {
+            "containerPort": 9000,
+            "hostPort": 0
+        }
+    ]
+  }
+]

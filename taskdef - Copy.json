@@ -1,0 +1,24 @@
+{
+    "executionRoleArn": "arn:aws:iam::360119372877:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "dmytroapp2",
+            "image": "<IMAGE1_NAME>",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "containerPort": 80
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512",
+    "family": "ecs-demo"
+}

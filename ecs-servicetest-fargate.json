@@ -10,10 +10,5 @@
         }
     ],
     "desiredCount": 1,
-    "launchType": "EC2",
-    "schedulingStrategy": "REPLICA",
-    "deploymentController": {
-        "type": "CODE_DEPLOY"
-    },
     "role": "ecsServiceRole"
 }

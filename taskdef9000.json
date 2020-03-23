@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "dmytroapp2",
-            "image": "360119372877.dkr.ecr.us-east-1.amazonaws.com/testbase:latest",
+            "image": "360119372877.dkr.ecr.us-east-1.amazonaws.com/ecs-sample-app:latest",
             "essential": true,
 			"secrets": [
                 {
@@ -47,7 +47,7 @@
           ],
             "portMappings": [
                 {
-                    "hostPort": 0,
+                    "hostPort": 9000,
                     "protocol": "tcp",
                     "containerPort": 9000
                 }

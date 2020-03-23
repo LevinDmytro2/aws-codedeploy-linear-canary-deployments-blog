@@ -1,0 +1,14 @@
+{
+    "cluster": "my-cluster",
+    "serviceName": "my-service",
+    "taskDefinition": "sinatra-hi",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:360119372877:targetgroup/my-target-group/4292a8afc278fd7a",
+            "containerName": "web",
+            "containerPort": 9000
+        }
+    ],
+    "desiredCount": 1,
+    "role": "ecsServiceRole"
+}

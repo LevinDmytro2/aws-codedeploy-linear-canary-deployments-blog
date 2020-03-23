@@ -1,0 +1,19 @@
+  {
+    "family": "sinatra-hi",
+    "containerDefinitions": [
+      {
+        "name": "web",
+        "image": "360119372877.dkr.ecr.us-east-1.amazonaws.com/ecs-sample-app:latest",
+        "cpu": 128,
+        "memoryReservation": 128,
+        "portMappings": [
+          {
+            "containerPort": 9000,
+            "protocol": "tcp"
+          }
+        ],
+        
+        "essential": true
+      }
+    ]
+  }

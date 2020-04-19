@@ -1,0 +1,48 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email)
+      - wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
+      - add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+      - apt-get install adoptopenjdk-8-hotspot
+      - echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
+      - curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | apt-key add
+      - apt-get update
+      - apt-get install sbt
+      - export JAVA_HOME=/lib/jvm/adoptopenjdk-8-hotspot-amd64/
+      - export PATH=$PATH:$JAVA_HOME/bin
+      - mkdir ~/.sbt
+      - cp ./build/vdev/credentials ~/.sbt/.credentials
+      - cd ./server/gaia
+      - sbt clean universal:packageBin
+  build:
+    commands:
+      - pwd
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - REPOSITORY_URI=360119372877.dkr.ecr.us-east-1.amazonaws.com/testbase
+      - IMAGE_TAG=1.8
+      - docker build -t $REPOSITORY_URI:$IMAGE_TAG .
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - cat imageDetail.json
+      - pwd
+      - cp imageDetail.json $CODEBUILD_SRC_DIR
+artifacts:
+  files:
+    - imageDetail.json
+    - taskdeftestnobg.json
+    - appspec.yaml

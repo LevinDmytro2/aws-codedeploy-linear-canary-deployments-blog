@@ -1,4 +1,5 @@
-https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiNVZ6OTBvNm9NamdPVDY2cGFvZ29zbUJGTmZFSlE1NnVPR3BNcHp0dW9hL0pHbjByMWNmUFhmclk4cHAwdWNkTy94QVZJKzZ5RXJWSlBYM2gvMjMxbXRNPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik10NytCUHhyVDdkQTJPaFYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
+[![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiNVZ6OTBvNm9NamdPVDY2cGFvZ29zbUJGTmZFSlE1NnVPR3BNcHp0dW9hL0pHbjByMWNmUFhmclk4cHAwdWNkTy94QVZJKzZ5RXJWSlBYM2gvMjMxbXRNPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik10NytCUHhyVDdkQTJPaFYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)]
+
 
 AWS CodeDeploy now supports linear and canary deployments for Amazon ECS
 ========================================================================

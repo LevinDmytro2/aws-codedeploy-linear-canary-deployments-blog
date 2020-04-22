@@ -7,3 +7,5 @@ Resources:
         LoadBalancerInfo:
           ContainerName: "test2"
           ContainerPort: 9000
+Hooks:
+  - BeforeAllowTraffic: "CodeDeployHook_beforeAllowTraffic"
